@@ -446,12 +446,18 @@ function initFormStructure(){
 
   // Tugas harian
   const tl=document.getElementById('h-tugas-list');
-  if(tl) tl.innerHTML=TUGAS_ITEMS.map(item=>`
-    <label style="display:flex;gap:10px;align-items:center;cursor:pointer;padding:8px;border-radius:6px">
-      <input type="checkbox" class="h-tugas-cb" data-item="${item}" style="width:18px;height:18px;cursor:pointer">
-      <span style="font-size:13px;color:var(--text1)">${item}</span>
-    </label>
-  `).join('');
+  if(tl){
+    tl.innerHTML='';
+    TUGAS_ITEMS.forEach(item=>{
+      const d=document.createElement('div'); d.className='check-row';
+      d.innerHTML=`<label>${item}</label>
+        <div style="display:flex;gap:6px">
+          <button class="chk-btn yes" onclick="setTugasChk(this,'${item}','ya')">Ya ✓</button>
+          <button class="chk-btn" onclick="setTugasChk(this,'${item}','tidak')">Tidak ✗</button>
+        </div>`;
+      tl.appendChild(d);
+    });
+  }
 
   // Checklist
   const cw=document.getElementById('cl-wrap'); cw.innerHTML='';
@@ -638,6 +644,11 @@ function calcTim(inp){
   const tr=inp.closest('tr');
   const h=+tr.querySelector('.th').value||0,i=+tr.querySelector('.ti').value||0;
   tr.querySelector('.tp').textContent=(h+i)>0?Math.round(h/(h+i)*100)+'%':'—';
+}
+//ceklist tugas//
+function setTugasChk(btn, item, val){
+  btn.parentElement.querySelectorAll('.chk-btn').forEach(b=>b.classList.remove('yes'));
+  if(val==='ya') btn.classList.add('yes');
 }
 
 // ─── COLLECT ───
