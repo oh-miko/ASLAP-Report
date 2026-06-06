@@ -1,4 +1,4 @@
-const CACHE='sppg-aslap-v1';
+const CACHE_NAME = `sppg-${process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || 'local'}`;
 const ASSETS=['./index.html','./manifest.json','https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap','https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'];
 
 self.addEventListener('install',e=>{

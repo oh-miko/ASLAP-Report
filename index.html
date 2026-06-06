@@ -647,8 +647,11 @@ function calcTim(inp){
 }
 //ceklist tugas//
 function setTugasChk(btn, item, val){
-  btn.parentElement.querySelectorAll('.chk-btn').forEach(b=>b.classList.remove('yes'));
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.chk-btn').forEach(b=>b.classList.remove('yes','no'));
   if(val==='ya') btn.classList.add('yes');
+  if(val==='tidak') btn.classList.add('no');
+  // kalau neutral (tidak klik apapun), kedua button tidak highlight
 }
 
 // ─── COLLECT ───
