@@ -452,7 +452,7 @@ function initFormStructure(){
       const d=document.createElement('div'); d.className='check-row';
       d.innerHTML=`<label>${item}</label>
         <div style="display:flex;gap:6px">
-          <button class="chk-btn yes" onclick="setTugasChk(this,'${item}','ya')">Ya ✓</button>
+          <button class="chk-btn" onclick="setTugasChk(this,'${item}','ya')">Ya ✓</button>
           <button class="chk-btn" onclick="setTugasChk(this,'${item}','tidak')">Tidak ✗</button>
         </div>`;
       tl.appendChild(d);
