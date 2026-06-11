@@ -408,6 +408,8 @@ function showPage(id,el){
   if(id==='ekspor') updateEkspor();
   if(id==='rekap')  hitungRekap();
   if(id==='harian') {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('h-tgl').value = today;
   renderSavedList();
   initTugas();
   }
